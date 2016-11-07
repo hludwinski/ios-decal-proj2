@@ -73,12 +73,15 @@
                                 <rect key="frame" x="157" y="74" width="100" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter letter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EjP-6L-mve">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter letter" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EjP-6L-mve" userLabel="Text Field">
                                 <rect key="frame" x="76" y="409" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="a2c-cq-hqi" id="Su3-JZ-WDk"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67n-TD-7RZ">
                                 <rect key="frame" x="254" y="401" width="81" height="47"/>
@@ -124,7 +127,7 @@
                     <connections>
                         <outlet property="hangmanPic" destination="gHE-QI-yvz" id="c7t-mh-UAT"/>
                         <outlet property="incorrectGuessesLabel" destination="2UT-0E-jh8" id="hbR-4X-Pgf"/>
-                        <outlet property="letterTextField" destination="EjP-6L-mve" id="VVE-Go-rgL"/>
+                        <outlet property="textField" destination="EjP-6L-mve" id="aXd-w7-Gnb"/>
                         <outlet property="wordLabel" destination="fH4-Iw-y4S" id="bo9-2A-DcB"/>
                     </connections>
                 </viewController>

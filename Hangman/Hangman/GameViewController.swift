@@ -8,9 +8,9 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var letterTextField: UITextField!
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var incorrectGuessesLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var hangmanPic: UIImageView!
@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        textField.delegate = self
         // Do any additional setup after loading the view.
         let hangmanPhrases = HangmanPhrases()
         phrase = hangmanPhrases.getRandomPhrase()
@@ -45,9 +45,19 @@ class GameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        return newLength <= 1
+    }
+    
     @IBAction func GuessButton(_ sender: Any) {
-        if(letterTextField != nil){
-            let guess = letterTextField.text
+        if(textField != nil){
+            let guess = textField.text
             for i in 0...(phrase.characters.count-1){
                 if(guess == String(phrase[phrase.index(phrase.startIndex, offsetBy: i)])){
                     blanks[i] = guess
@@ -92,7 +102,7 @@ class GameViewController: UIViewController {
         correct = false;
         counter = 1;
         imgName = "hangman1.gif"
-        letterTextField.text = ""
+        textField.text = ""
         let hangmanPhrases = HangmanPhrases()
         phrase = hangmanPhrases.getRandomPhrase()
         for i in 0...(phrase.characters.count-1){
